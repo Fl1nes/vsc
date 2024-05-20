@@ -1,5 +1,18 @@
-const TB = require('node-telegram-bot-api')
+const express = require(`express`)
+сonst app = express ()
+const port =process.env.PORT || 4000;
 
+app.get('/',(req, res) => {
+    res.send('Hello World')
+})
+
+app.listen(port, () => {
+})
+console.log(`Example app listening on port ${port}`)
+
+
+
+const TB = require('node-telegram-bot-api')
 BOT_TOKEN = '7008755385:AAEwz_Gu9G7TABieQN0Dsp65qHNAs5FyHLI'
 
 bot = new TB(BOT_TOKEN, {
@@ -25,3 +38,18 @@ bot.onText(/\/start/, message => {
     }
    })
 })
+
+
+setInterval(() => {
+    let d = new Date()
+    console.log("work" + d)
+} ,  60 * 1000 )
+
+
+
+
+
+/*
+while(true) {
+    setInterval(console.log("work"), 9 * 60 * 1000 )
+}*/
