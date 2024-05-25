@@ -1,4 +1,5 @@
 const express = require('express');
+comst http = require('http')
 const app = express();
 const port =process.env.PORT || 4000;
 
@@ -38,18 +39,22 @@ bot.onText(/\/start/, message => {
     }
    })
 })
+const keepAlive = () => {
+    setInterval(() => {
+     http.get(`http://localhost:${port}`, (res) =>{
+        let d = new Date()
+        console.log("work" + d)
+     }).on('error', (error)=> {
+        console.error(`Error: ${error.massage}`)
+     }) 
+
+    } ,  60 * 1000 )
+}
+ 
+keepAlive();
 
 
-setInterval(() => {
-    let d = new Date()
-    console.log("work" + d)
-} ,  60 * 1000 )
 
 
 
 
-
-/*
-while(true) {
-    setInterval(console.log("work"), 9 * 60 * 1000 )
-}*/
